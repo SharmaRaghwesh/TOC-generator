@@ -33,6 +33,12 @@ if st.button("🚀 Process"):
         # Run extraction
         extractor = BidderDocumentExtractor(brief_note_path)
         matched_docs = extractor.get_documents_for_bidder(bidder_name)
+        bidder_file_name = []
+        # print(f"\nFound {len(documents)} documents for {bidder_name}:")
+        for i, doc in enumerate(matched_docs, 1):
+            print(f"{i}. {doc}")
+            bidder_file_name.append(doc)
+        bidder_file_name.insert(0, "00.pdf")
 
         if not matched_docs:
             st.error("No documents matched the bidder name.")
@@ -69,7 +75,8 @@ if st.button("🚀 Process"):
         final_path = os.path.join(output_folder, "final_output.pdf")
 
         # Merge steps
-        pdf_info = get_pdf_info(input_folder, final_files)
+        # pdf_info = get_pdf_info(input_folder, final_files)
+        pdf_info = get_pdf_info(input_folder, bidder_file_name)
         create_simple_toc(pdf_info, toc_path)
         merge_all_pdfs(input_folder, final_files, merged_path)
         combine_toc_and_merged(toc_path, merged_path, final_path)
