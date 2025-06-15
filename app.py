@@ -90,15 +90,28 @@ if st.button("🚀 Process"):
         merge_all_pdfs(input_folder, bidder_file_name, merged_path)
         combine_toc_and_merged(toc_path, merged_path, final_path)
 
-        st.session_state["final_path"] = final_path
-        st.session_state["toc_path"] = toc_path
+        with open(final_path, "rb") as f:
+            st.session_state["final_pdf_bytes"] = f.read()
+    
+        with open(toc_path, "rb") as f:
+            st.session_state["toc_pdf_bytes"] = f.read()
+    
         st.session_state["merge_done"] = True
+
        
 
         # Download buttons
-        st.success("✅ Merging Completed!")
-        with open(final_path, "rb") as f:
-            st.download_button("📅 Download Final Merged PDF", f, file_name="Final_Merged_Document.pdf")
+        # st.success("✅ Merging Completed!")
+        # with open(final_path, "rb") as f:
+        #     st.download_button("📅 Download Final Merged PDF", f, file_name="Final_Merged_Document.pdf")
 
-        with open(toc_path, "rb") as f:
-            st.download_button("📅 Download Table of Contents", f, file_name="Table_of_Contents.pdf")
+        # with open(toc_path, "rb") as f:
+        #     st.download_button("📅 Download Table of Contents", f, file_name="Table_of_Contents.pdf")
+        if st.session_state.get("merge_done"):
+            st.success("✅ Merging Completed!")
+            st.download_button("📅 Download Final Merged PDF",st.session_state["final_pdf_bytes"],file_name="Final_Merged_Document.pdf")
+            #other one
+            st.download_button("📅 Download Table of Contents",st.session_state["toc_pdf_bytes"],file_name="Table_of_Contents.pdf")
+
+
+
