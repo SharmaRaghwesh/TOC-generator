@@ -39,8 +39,7 @@ if st.button("🚀 Process"):
             print(f"{i}. {doc}")
             bidder_file_name.append(doc)
         bidder_file_name.insert(0, "00.pdf")
-        print('The bidder files from toc is....' ,bidder_file_name)
-
+        
         if not matched_docs:
             st.error("No documents matched the bidder name.")
             st.stop()
@@ -48,6 +47,7 @@ if st.button("🚀 Process"):
         # Save uploaded supporting docs
         input_folder = os.path.join(tmpdir, "docs")
         os.makedirs(input_folder, exist_ok=True)
+        
         uploaded_files_dict = {}
         for file in supporting_docs:
             file_path = os.path.join(input_folder, file.name)
@@ -58,7 +58,6 @@ if st.button("🚀 Process"):
         # Ensure the matched docs exist in uploaded files
         available_files = set(uploaded_files_dict.keys())
         final_files = ["00.pdf"] + [f for f in matched_docs if f in available_files]
-        print('The final files is....' ,final_files)
         st.write("Final files:", final_files)
         st.write("Bidder file names:", bidder_file_name)
 
@@ -81,6 +80,12 @@ if st.button("🚀 Process"):
 
         # Merge steps
         # pdf_info = get_pdf_info(input_folder, final_files)
+
+        missing_files = []
+        for filename in bidder_file_name:
+            if not os.path.exists(os.path.join(input_folder, filename)):
+                missing_files.append(filename)
+                st.write('Missing pdfs...',filename)
         
         
         pdf_info = get_pdf_info(input_folder, bidder_file_name)
