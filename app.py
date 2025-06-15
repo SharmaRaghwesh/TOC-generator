@@ -39,7 +39,7 @@ if st.button("🚀 Process"):
             print(f"{i}. {doc}")
             bidder_file_name.append(doc)
         bidder_file_name.insert(0, "00.pdf")
-        print('The bidder files from toc is.... ,bidder_file_name)
+        print('The bidder files from toc is....' ,bidder_file_name)
 
         if not matched_docs:
             st.error("No documents matched the bidder name.")
@@ -58,7 +58,7 @@ if st.button("🚀 Process"):
         # Ensure the matched docs exist in uploaded files
         available_files = set(uploaded_files_dict.keys())
         final_files = ["00.pdf"] + [f for f in matched_docs if f in available_files]
-        print('The final files is.... ,final_files)
+        print('The final files is....' ,final_files)
 
         if not final_files:
             st.error("None of the matched files were found in the uploaded documents.")
