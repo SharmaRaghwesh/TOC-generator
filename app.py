@@ -10,9 +10,9 @@ from merge_utils import (
     print_summary
 )
 
-st.set_page_config(page_title="Bidder PDF Merger", layout="centered")
+st.set_page_config(page_title="Bidder PDF Merger", layout="wide")
 
-st.title("📄 Bidder Document Extractor and Merger")
+st.title("📄 Bidder Document Extractor ,Merger and TOC Generator")
 
 # --- Input Section ---
 brief_note_pdf = st.file_uploader("1️⃣ Upload Brief Note PDF", type="pdf")
