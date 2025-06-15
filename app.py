@@ -59,7 +59,7 @@ if st.button("🚀 Process"):
         available_files = list(set(uploaded_files_dict.keys()))
         # final_files = ["00.pdf"] + [f for f in matched_docs if f in available_files]
         final_files = ["00.pdf"] + available_files
-        # st.write("Final files:", final_files)
+        # st.write("Final files:", final_files) #removed 
         st.write("Bidder file names:", bidder_file_name)
 
 
