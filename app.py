@@ -107,11 +107,11 @@ if st.button("🚀 Process"):
 
         # with open(toc_path, "rb") as f:
         #     st.download_button("📅 Download Table of Contents", f, file_name="Table_of_Contents.pdf")
-        if st.session_state.get("merge_done"):
-            st.success("✅ Merging Completed!")
-            st.download_button("📅 Download Final Merged PDF",st.session_state["final_pdf_bytes"],file_name="Final_Merged_Document.pdf")
-            #other one
-            st.download_button("📅 Download Table of Contents",st.session_state["toc_pdf_bytes"],file_name="Table_of_Contents.pdf")
+if st.session_state.get("merge_done"):
+    st.success("✅ Merging Completed!")
+    st.download_button("📅 Download Final Merged PDF",st.session_state["final_pdf_bytes"],file_name="Final_Merged_Document.pdf")
+    #other one
+    st.download_button("📅 Download Table of Contents",st.session_state["toc_pdf_bytes"],file_name="Table_of_Contents.pdf")
 
 
 
