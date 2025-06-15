@@ -87,6 +87,10 @@ if st.button("🚀 Process"):
         create_simple_toc(pdf_info, toc_path)
         merge_all_pdfs(input_folder, bidder_file_name, merged_path)
         combine_toc_and_merged(toc_path, merged_path, final_path)
+
+        st.session_state["final_path"] = final_path
+        st.session_state["toc_path"] = toc_path
+        st.session_state["merge_done"] = True
        
 
         # Download buttons
