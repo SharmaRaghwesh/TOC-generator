@@ -56,9 +56,9 @@ if st.button("🚀 Process"):
             uploaded_files_dict[file.name] = file_path
 
         # Ensure the matched docs exist in uploaded files
-        available_files = set(uploaded_files_dict.keys())
-        st.write("available_files:", available_files)
-        final_files = ["00.pdf"] + [f for f in matched_docs if f in available_files]
+        available_files = list(set(uploaded_files_dict.keys()))
+        # final_files = ["00.pdf"] + [f for f in matched_docs if f in available_files]
+        final_files = ["00.pdf"] + available_files
         st.write("Final files:", final_files)
         st.write("Bidder file names:", bidder_file_name)
 
@@ -66,10 +66,6 @@ if st.button("🚀 Process"):
         if not final_files:
             st.error("None of the matched files were found in the uploaded documents.")
             st.stop()
-
-        # Create dummy 00.pdf (or replace with an actual front page if needed)
-        with open(os.path.join(input_folder, "00.pdf"), "wb") as f:
-            f.write(b" ")
 
         output_folder = os.path.join(tmpdir, "output")
         os.makedirs(output_folder, exist_ok=True)
