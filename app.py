@@ -57,6 +57,7 @@ if st.button("🚀 Process"):
 
         # Ensure the matched docs exist in uploaded files
         available_files = set(uploaded_files_dict.keys())
+        st.write("available_files:", available_files)
         final_files = ["00.pdf"] + [f for f in matched_docs if f in available_files]
         st.write("Final files:", final_files)
         st.write("Bidder file names:", bidder_file_name)
