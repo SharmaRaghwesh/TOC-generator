@@ -78,7 +78,7 @@ if st.button("🚀 Process"):
         # pdf_info = get_pdf_info(input_folder, final_files)
         pdf_info = get_pdf_info(input_folder, bidder_file_name)
         create_simple_toc(pdf_info, toc_path)
-        merge_all_pdfs(input_folder, final_files, merged_path)
+        merge_all_pdfs(input_folder, bidder_file_name, merged_path)
         combine_toc_and_merged(toc_path, merged_path, final_path)
 
         # Download buttons
